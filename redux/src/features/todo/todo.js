@@ -1,8 +1,9 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
+
 // this is the default state
 const initialState = {
-    todos: [{ id: 1, text: "Hello World" }]
+    todos: []
 }
 
 // so what reducer does is that it takes initial state and actions/current change or new event occur
@@ -17,11 +18,13 @@ export const todoSlice = createSlice({
                 id: nanoid(),
                 text: actions.payload
             }
-            state.todos.push(todo); // here we update the default state of todo slice with new change that we get through actions
+            state.todos.push(todo)// here we update the default state of todo slice with new change that we get through actions
         },
+
         removeTodo: (state, actions) => {
-            state.todos = state.todos.filter(todo => todo.id !== actions.payload.id)
+            state.todos = state.todos.filter(todo => todo.id !== actions.payload)
         },
+
         updateTodo: (state, actions) => {
             const todoid = actions.payload.id;
             const todotext = actions.payload.text;
@@ -33,6 +36,10 @@ export const todoSlice = createSlice({
 
         }
     }
+
+
+
+
 })
 
 

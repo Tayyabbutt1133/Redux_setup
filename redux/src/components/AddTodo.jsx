@@ -11,6 +11,7 @@ const AddTodo = () => {
 
   const handleTodo = (e) => {
     e.preventDefault();
+    console.log("Adding new Todo :", istodo);
     dispatch(addTodo(istodo));  // so now what we are doing is that we are using dispatch built in function from react-redux to push todo data to global todo slice and specifically to addtodo reducer method in this case !
     setIsTodo("");
   };

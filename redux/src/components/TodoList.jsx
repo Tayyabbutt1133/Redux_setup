@@ -6,6 +6,13 @@ const TodoList = () => {
   const dispatch = useDispatch();
 
   const todos = useSelector((state) => state.todos); // now we are getting todos from global redux state/todos slice
+  console.log("Todos from Global state in list :", todos);
+
+  const removeHandler = (todoId) => {
+    console.log("Deleting this Todo", todoId);
+    dispatch(removeTodo(todoId))
+  }
+
 
   return (
     <>
@@ -19,7 +26,7 @@ const TodoList = () => {
             >
               <span>{todo.text}</span>
               <button
-                onClick={() => dispatch(removeTodo(todo.id))}
+                onClick={() => removeHandler(todo.id)}
                 className="text-sm text-white cursor-pointer bg-red-500 hover:bg-red-600 px-2 py-1 rounded"
               >
                 Delete
